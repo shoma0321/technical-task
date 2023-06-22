@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic';
 const Select = dynamic(() => import('react-select'), { ssr: false });
 
 export default function SearchForm({ onSearch }) {
+  console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
   const [name, setName] = useState('');
   const [location, setLocation] = useState([]);
   const [sales, setSales] = useState('');
