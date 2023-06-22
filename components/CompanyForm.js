@@ -33,8 +33,8 @@ export default function CompanyForm({ company, onSuccess }) {
         }
 
     const response = company
-      ? await axios.put(`http://localhost:3001/api/companies/${company.id}`, { code, name, status, nameKana, postalCode, address, representativeName, representativeNameKana, phoneNumber,profit2022, profit2021, profit2020, sales2022, sales2021, sales2020, memo })
-      : await axios.post('http://localhost:3001/api/companies', { code, name, status, nameKana, postalCode, address, representativeName, representativeNameKana, phoneNumber,profit2022, profit2021, profit2020, sales2022, sales2021, sales2020, memo });
+      ? await axios.put(`${process.env.NEXT_PUBLIC_API_BASE_URL}/${company.id}`, { code, name, status, nameKana, postalCode, address, representativeName, representativeNameKana, phoneNumber,profit2022, profit2021, profit2020, sales2022, sales2021, sales2020, memo })
+      : await axios.post(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/companies`, { code, name, status, nameKana, postalCode, address, representativeName, representativeNameKana, phoneNumber,profit2022, profit2021, profit2020, sales2022, sales2021, sales2020, memo });
 
     onSuccess(response.data);
 
@@ -46,7 +46,7 @@ export default function CompanyForm({ company, onSuccess }) {
 
   const handleDelete = async () => {
     if (confirm('このデータを削除してもよろしいですか？')) {
-      await axios.delete(`http://localhost:3001/api/companies/${company.id}`);
+      await axios.delete(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/companies/${company.id}`);
       onSuccess();
     }
   };
