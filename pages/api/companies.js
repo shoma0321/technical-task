@@ -5,6 +5,7 @@ export default async function handler(req, res) {
   console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
   if (req.method === 'GET') {
     // Get companies from Rails API
+    console.log(process.env.NEXT_PUBLIC_API_BASE_URL);
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/companies`, { params: req.query });
     res.status(200).json(response.data);
   } else if (req.method === 'POST') {
